@@ -24,7 +24,6 @@ public class ApplicationUser implements UserDetails {
     Date dob;
 
     public ApplicationUser(){}
-
     public ApplicationUser(String username, String password, String firstName, String lastName, Date dob, String bio) {
         this.username = username;
         this.password = password;
@@ -41,12 +40,12 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     @Override

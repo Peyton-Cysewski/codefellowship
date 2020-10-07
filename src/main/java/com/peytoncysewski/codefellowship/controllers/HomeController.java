@@ -17,4 +17,10 @@ public class HomeController {
         System.out.println("Rendering the Signup page");
         return "signup";
     }
+
+    @GetMapping("/login")
+    public String renderLogin() {
+        System.out.println("Rendering the Login page");
+        return "login";
+    }
 }
