@@ -19,12 +19,10 @@ public class HomeController {
     public String renderHome(Principal p, Model m) {
         if (p == null) {
             System.out.println("null");
-            m.addAttribute("isSignedIn", false);
         }
         else {
             System.out.println(p.getName());
             ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-            m.addAttribute("isSignedIn", true);
             m.addAttribute("user", user);
         }
         System.out.println("Rendering the Home page");
