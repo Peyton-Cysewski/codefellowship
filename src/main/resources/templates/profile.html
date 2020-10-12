@@ -7,5 +7,14 @@
 <body>
     <div th:replace="fragments/nav :: nav"></div>
     <h1 th:text="${user.getUsername()}"></h1>
+    <form th:if="${canPost}" action="/createpost" method="post">
+        <label for="post">Post</label>
+        <input id="post" name="body" type="textarea">
+        <input type="text" name="username" th:value="${user.getUsername()}" hidden>
+        <button type="submit">Post</button>
+    </form>
+    <ul>
+        <li th:each="post : ${posts}" th:text="${post}"></li>
+    </ul>
 </body>
 </html>
