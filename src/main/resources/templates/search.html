@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Code Fellowship</title>
+</head>
+<body>
+    <h1>Search</h1>
+    <div th:replace="fragments/nav :: nav"></div>
+    <ul>
+        <li th:each="user : ${users}">
+            <a th:href="'/user/' + ${user.getUsername()}" th:text="${user.getUsername()}"></a>
+            <form action="/follow" method="post">
+                <input type="test" name="username" th:value="${user.getUsername()}" hidden>
+                <button type="submit">Follow</button>
+            </form>
+        </li>
+    </ul>
+</body>
+</html>
