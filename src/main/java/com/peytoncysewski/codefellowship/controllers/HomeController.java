@@ -19,8 +19,7 @@ public class HomeController {
     public String renderHome(Principal p, Model m) {
         if (p == null) {
             System.out.println("null");
-        }
-        else {
+        } else {
             System.out.println(p.getName());
             ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
             m.addAttribute("user", user);

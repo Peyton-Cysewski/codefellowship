@@ -13,8 +13,17 @@
         <input type="text" name="username" th:value="${user.getUsername()}" hidden>
         <button type="submit">Post</button>
     </form>
+    <h2>Posts</h2>
     <ul>
         <li th:each="post : ${posts}" th:text="${post}"></li>
+    </ul>
+    <h2 th:if="${user.whoIsFollowingTheUser.size() > 0}" th:text="'Followers (' + ${user.whoIsFollowingTheUser.size() + ')'}"></h2>
+    <ul th:if="${user.whoIsFollowingTheUser.size() > 0}">
+        <li th:each="user : ${user.whoIsFollowingTheUser}"><a th:href="'/user/' + ${user.getUsername()}" th:text="${user.getUsername()}"></a></li>
+    </ul>
+    <h2 th:if="${user.whoTheUserFollows.size()} > 0" th:text="'Following (' + ${user.whoTheUserFollows.size() + ')'}"></h2>
+    <ul th:if="${user.whoTheUserFollows.size()} > 0">
+        <li th:each="user : ${user.whoTheUserFollows}"><a th:href="'/user/' + ${user.getUsername()}" th:text="${user.getUsername()}"></a></li>
     </ul>
 </body>
 </html>

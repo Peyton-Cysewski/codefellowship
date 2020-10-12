@@ -59,4 +59,18 @@ public class ApplicationUserController {
         m.addAttribute("posts", posts);
         return "profile";
     }
+
+    @PostMapping("/follow")
+    public RedirectView follow(String username, Principal p) {
+        ApplicationUser follower = applicationUserRepository.findByUsername(p.getName());
+        ApplicationUser followee = applicationUserRepository.findByUsername(username);
+
+        follower.whoTheUserFollows.add(followee);
+        followee.whoIsFollowingTheUser.add(follower);
+
+        applicationUserRepository.save(follower);
+        applicationUserRepository.save(followee);
+
+        return new RedirectView("/search");
+    }
 }
